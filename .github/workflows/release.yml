@@ -45,11 +45,13 @@ jobs:
             echo "should_update=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Initialize and update submodule
+      - name: Clone CDDA repository (shallow)
         if: steps.check.outputs.should_update == 'true'
-        run: git submodule update --init --depth 1
-
-      - name: Checkout submodule to latest tag
+        run: |
+          if [ -d "cdda" ]; then rm -rf cdda; fi
+          git clone --depth 1 https://github.com/CleverRaven/Cataclysm-DDA.git cdda
+      
+      - name: Checkout CDDA to latest tag
         if: steps.check.outputs.should_update == 'true'
         run: |
           cd cdda

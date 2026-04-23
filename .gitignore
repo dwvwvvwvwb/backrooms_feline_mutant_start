@@ -1,0 +1,6 @@
+cdda/
+release/
+.last-sync-tag
+__pycache__/
+*.pyc
+.DS_Store
