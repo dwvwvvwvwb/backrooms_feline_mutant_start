@@ -1,0 +1,11 @@
+[
+  {
+    "type": "MOD_INFO",
+    "id": "backrooms_feline_mutant_start",
+    "name": "Backrooms: Feline Mutant Start",
+    "authors": ["dwvwvvwvwb"],
+    "description": "Dweller starts as a post-threshold Feline mutant, with access to FELINE-specific and generic mutations.",
+    "category": "content",
+    "dependencies": ["backrooms", "extra_mut_scens"]
+  }
+]

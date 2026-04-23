@@ -1,0 +1,17 @@
+[
+  {
+    "type": "scenario",
+    "id": "backroom_dweller",
+    "copy-from": "backroom_dweller",
+    "forced_traits": [
+      "THRESH_FELINE",
+      "FELINE_FUR",
+      "FELINE_EARS",
+      "FELINE_FLEXIBILITY",
+      "FELINE_LEAP"
+    ],
+    "extend": {
+      "traits": []
+    }
+  }
+]
