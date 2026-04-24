@@ -80,8 +80,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull origin main
           git commit -m "Sync traits with CDDA ${{ steps.cdda.outputs.tag }}"
-          git pull --rebase origin main
           git push origin HEAD:main
 
       - name: Create tag and release
