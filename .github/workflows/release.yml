@@ -80,9 +80,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull origin main
+          git add scenarios.json
           git commit -m "Sync traits with CDDA ${{ steps.cdda.outputs.tag }}"
-          git push origin HEAD:main
+          git push --force-with-lease origin HEAD:main
 
       - name: Create tag and release
         if: steps.check.outputs.should_update == 'true' && steps.diff.outputs.changed == 'true'
