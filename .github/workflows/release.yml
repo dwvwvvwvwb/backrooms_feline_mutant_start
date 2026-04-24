@@ -19,13 +19,15 @@ jobs:
 
       - name: Get latest CDDA release tag via GitHub API
         id: cdda
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          API_RESPONSE=$(curl -s https://api.github.com/repos/CleverRaven/Cataclysm-DDA/releases?per_page=1)
-          LATEST_TAG=$(echo "$API_RESPONSE" | jq -r '.[0].tag_name')
-          LATEST_COMMIT=$(echo "$API_RESPONSE" | jq -r '.[0].target_commitish')
-          echo "tag=$LATEST_TAG" >> $GITHUB_OUTPUT
-          echo "commit=$LATEST_COMMIT" >> $GITHUB_OUTPUT
-          echo "Latest CDDA release tag: $LATEST_TAG"
+            API_RESPONSE=$(curl -s -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/repos/CleverRaven/Cataclysm-DDA/releases?per_page=1)
+            LATEST_TAG=$(echo "$API_RESPONSE" | jq -r '.[0].tag_name')
+            LATEST_COMMIT=$(echo "$API_RESPONSE" | jq -r '.[0].target_commitish')
+            echo "tag=$LATEST_TAG" >> $GITHUB_OUTPUT
+            echo "commit=$LATEST_COMMIT" >> $GITHUB_OUTPUT
+            echo "Latest CDDA release tag: $LATEST_TAG"
 
       - name: Read last synced CDDA tag
         id: last
